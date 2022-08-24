@@ -1,11 +1,11 @@
 import styles from "./formInput.module.css";
 
-const FormInput = (labelName, type, value, func) => {
+const FormInput = (labelName, type, value, name) => {
     return (
         <div>
             <label>{labelName}
                 <div>
-                    <input className={styles.inputBox} type={type} value={value} onChange={func} />
+                    <input className={styles.inputBox} type={type} defaultValue={value} name={name} />
                 </div>
             </label>
 
@@ -13,12 +13,12 @@ const FormInput = (labelName, type, value, func) => {
     )
 };
 
-const RequiredFormInput = (labelName, type, value, func) => {
+const RequiredFormInput = (labelName, type, value, name) => {
     return (
         <div>
             <label>{labelName}
                 <div>
-                    <input className={styles.inputBox} type={type} required value={value} onChange={func} />
+                    <input className={styles.inputBox} type={type} required defaultValue={value} name={name} />
                 </div>
             </label>
 
@@ -26,7 +26,7 @@ const RequiredFormInput = (labelName, type, value, func) => {
     )
 };
 
-const PhoneInput = (labelName, value, func) => {
+const PhoneInput = (labelName, value) => {
     return (
         <div>
             <label>{labelName}
@@ -38,8 +38,7 @@ const PhoneInput = (labelName, value, func) => {
                         type="tel"
                         pattern="+[0-9]-{2}-[0-9]{1}-[0-9]{2}-[0-9]{4}-[0-9]{4}"
                         required
-                        value={value}
-                        onChange={func}
+                        defaultValue={value}
                     />
                 </div>
             </label>

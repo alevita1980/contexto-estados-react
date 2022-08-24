@@ -1,40 +1,34 @@
 import styles from "./signUp.module.css";
 import { FormInput } from "../components/form_inputs/formInputs.js";
-import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const SignUpForm = (props) => {
   let navigate = useNavigate();
   const { setAuthHook, userData, userDataHook } = props;
-  const [firstName, setFirstName] = useState(userData.firstName);
-  const [lastName, setLastname] = useState(userData.lastName);
-  const [username, setUsername] = useState(userData.username);
-  const [email, setEmail] = useState(userData.email);
-  const [password, setPassword] = useState("12345");
-  const [repeatPassword, setRepeatPassword] = useState("12345");
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const e = event.target
     alert(`Your data: 
-    ✅ First Name: ${firstName}
-    ✅ Last Name: ${lastName}
-    ✅ Username: ${username}
-    ✅ E-mail: ${email}
-    ✅ Password: ${password}
-    ✅ Repeated password: ${repeatPassword}`);
-    if (password !== repeatPassword) {
+    ✅ First Name: ${e.firstName.value}
+    ✅ Last Name: ${e.lastName.value}
+    ✅ Username: ${e.username.value}
+    ✅ E-mail: ${e.email.value}
+    ✅ Password: ${e.password.value}
+    ✅ Repeated password: ${e.repeatPassword.value}`);
+    if (e.password.value !== e.repeatPassword.value) {
       // Previene que las contraseñas ingresadas sean distinas
       alert("😬 New passwords doesn't match");
     } else {
       // Actualiza el objeto global userData
       setAuthHook(true);
-      userDataHook(userData);
       alert("🥳 Thank you for joining us!!");
-      userData.firstName = firstName;
-      userData.lastName = lastName;
-      userData.username = username;
-      userData.email = email;
-      userData.password = password;
+      userData.firstName = e.firstName.value;
+      userData.lastName = e.lastName.value;
+      userData.username = e.username.value;
+      userData.email = e.email.value;
+      userData.password = e.password.value;
+      userDataHook(userData);
       navigate("/home", { replace: true });
     }
   };
@@ -46,12 +40,12 @@ const SignUpForm = (props) => {
           <h1>Sign Up!</h1>
         </div>
         <form className={styles.signUpFormContainer} onSubmit={handleSubmit}>
-          {FormInput("First name:", "text", firstName, (e) => setFirstName(e.target.value))}
-          {FormInput("Last name:", "text", lastName, (e) => setLastname(e.target.value))}
-          {FormInput("Username:", "text", username, (e) => setUsername(e.target.value))}
-          {FormInput("Email:", "email", email, (e) => setEmail(e.target.value))}
-          {FormInput("Password:", "password", password, (e) => setPassword(e.target.value))}
-          {FormInput("Repeat password:", "password", repeatPassword, (e) => setRepeatPassword(e.target.value))}
+          {FormInput("First name:", "text", userData.firstName,"firstName" )}
+          {FormInput("Last name:", "text", userData.lastName,"lastName" )}
+          {FormInput("Username:", "text", userData.username,"username" )}
+          {FormInput("Email:", "email", userData.email,"email" )}
+          {FormInput("Password:", "password", userData.password,"password" )}
+          {FormInput("Repeat password:", "password", "MySuperSecretKey","repeatPassword" )}
           <input
             className={styles.submitButton}
             type="submit"

@@ -9,7 +9,6 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = (props) => {
     const {auth, userData} = props
-    const username=userData.username;
     const button = (url, cls, image) => {
         return <NavLink to={url}><img className={cls} alt="" src={image}></img></NavLink>
     }
@@ -20,7 +19,6 @@ const Navbar = (props) => {
                 <NavLink to="/"><img className={styles.logo} alt="" src={marvelLogo}></img></NavLink>
             </div>
             <div className={styles.buttonContainer}>
-                {auth ? <span style={{color:"white"}}>😁 Hola {username}, bienvenido.</span>: <></>}
                 {button("/home", styles.home, home)}
                 {auth === true ? <span className ={styles.hiden}></span> : button("/signup", styles.signup, signup)}
                 {button("/user", styles.user, user)}

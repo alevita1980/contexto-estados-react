@@ -2,15 +2,15 @@ import styles from "./login.module.css";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-const label = (labelName, type, value, func) => {
+const label = (labelName, type, value, name) => {
   return (
     <label>
       {labelName}
       <input
         className={styles.inputBox}
         type={type}
-        value={value}
-        onChange={func}
+        defaultValue={value}
+        name={name}
       />
     </label>
   );
@@ -18,11 +18,8 @@ const label = (labelName, type, value, func) => {
 
 const LoginForm = (props) => {
   // Desestructuramos los props:
-  const { auth, setAuthHook, userData, userDataHook } = props;
+  const { setAuthHook, userData, userDataHook } = props;
   const { username, password } = userData;
-  // Establecemos dos hooks para manejar momentaneamente los datos:
-  const [newPass, setNewPass] = useState(password);
-  const [newName, setNewName] = useState(username);
 
   // Establecemos la función que guarda los cambios en los datos globales:
   const handleSubmit = (event) => {
@@ -31,8 +28,8 @@ const LoginForm = (props) => {
     // Seteamos como autorizado al usuario
     setAuthHook(true);
     // Actualizamos el objeto userData en este contexto
-    userData.username = newName;
-    userData.password = newPass;
+    userData.username = event.target.username.value;
+    userData.password = event.target.password.value;
     // Actualizamos userData para el contexto global
     userDataHook(userData);
     console.table(userData);
@@ -49,12 +46,8 @@ const LoginForm = (props) => {
           {/* Cada setXxxx actualiza "onChange" el valor del hook,
           cuando el usuario presiona una tecla en el campo, se actualiza
           el valor de la variable del hook. Es por eso que newName debe disparar a setNewName */}
-          {label("Username:", "text", newName, (e) =>
-            setNewName(e.target.value)
-          )}
-          {label("Password:", "password", newPass, (e) =>
-            setNewPass(e.target.value)
-          )}
+          {label("Username:", "text", username,"username")}
+          {label("Password:", "password", password,"password")}
           <input className={styles.submitButton} type="submit" value="Log In" />
         </form>
       </div>
