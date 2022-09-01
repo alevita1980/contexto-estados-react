@@ -1,22 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { createContext } from "react";
+import Context1 from "./components/01-context";
+import Hijo1 from "./components/02-contextA";
+
+// Create a Context
+export const WelcomeToContext = createContext();
+// { Provider, Consumer }
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <WelcomeToContext.Provider value={'Carmelo!'}>
+          <Context1/>
+          <Hijo1/>
+        </WelcomeToContext.Provider>
       </header>
     </div>
   );
