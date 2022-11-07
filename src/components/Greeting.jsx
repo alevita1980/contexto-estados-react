@@ -8,4 +8,4 @@ function Greeting() {
        <p>Ud se ha logeado como {currentUser.name}.</p>
      )
    }
-   export default Greeting;
+export default Greeting;   

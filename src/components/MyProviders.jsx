@@ -1,12 +1,12 @@
 import {useState} from 'react';
 import { createContext } from 'react';
 
-export  const ThemeContext = createContext();
-export const CurrentUserContext = createContext();
+export const ThemeContext = createContext(null);
+export const CurrentUserContext = createContext(null);
 
 function MyProviders({ children, theme, setTheme }) {
   
-  const [currentUser, setCurrentUser] = useState()
+  const [currentUser, setCurrentUser] = useState(null);
     
     return (
   
@@ -19,5 +19,5 @@ function MyProviders({ children, theme, setTheme }) {
       </ThemeContext.Provider>
     );
   }
-  export default MyProviders;
+export default MyProviders;  
   

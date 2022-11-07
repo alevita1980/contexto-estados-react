@@ -4,8 +4,8 @@ import WelcomePanel from './components/WelcomePanel';
 
 
 // Importe createContext y cree los siguientes contextos con const:ThemeContext y CurrentUserContext
-//export  const ThemeContext = createContext();
-//export const CurrentUserContext = createContext();
+//export  const ThemeContext = createContext(null);
+//export const CurrentUserContext = createContext(null);
 
 export default function MyApp() {
   const [theme, setTheme] = useState('light');
@@ -30,7 +30,7 @@ export default function MyApp() {
   // Importe  useState aqui y cree un estado con la variable currentUser y setCurrentUser
   // Luego haga que CurrentUserContext pueda proveerlos. 
 
-const [currentUser, setCurrentUser] = useState()
+const [currentUser, setCurrentUser] = useState(null)
   
   return (
 

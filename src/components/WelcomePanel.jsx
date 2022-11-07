@@ -4,7 +4,7 @@ import Panel from './Panel';
 import Greeting from './Greeting';
 import LoginForm from './LoginForm';
 
-export default function WelcomePanel({ children }) {
+function WelcomePanel({ children }) {
 
     const {currentUser} = useContext(CurrentUserContext)
     
@@ -17,4 +17,4 @@ export default function WelcomePanel({ children }) {
         </Panel>
       );
     }
-    
+ export default WelcomePanel;   

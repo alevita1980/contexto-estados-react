@@ -1,7 +1,7 @@
 import {useContext} from 'react';
 import {ThemeContext} from './MyProviders';
 
-function Panel({ title, children }) {
+  function Panel({ title, children }) {
     
    const theme = useContext(ThemeContext);
    const className = 'panel-' + theme;
@@ -12,4 +12,4 @@ function Panel({ title, children }) {
      </section>
    )
  }
- export default Panel;
+export default Panel; 

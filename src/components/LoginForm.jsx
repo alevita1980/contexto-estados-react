@@ -1,6 +1,6 @@
 import {useState, useContext} from 'react';
-import {CurrentUserContext} from './MyProviders'
-import Button from '../components/Button';
+import {CurrentUserContext} from './MyProviders';
+import Button from './Button';
 
 function LoginForm() {
     
@@ -16,7 +16,7 @@ function LoginForm() {
          <input
            required
            value={firstName}
-           onChange={e => setFirstName(e.target.value)}
+           onChange={(e) => setFirstName(e.target.value)}
          />
        </label>
        <label>
@@ -24,7 +24,7 @@ function LoginForm() {
          <input
          required
            value={lastName}
-           onChange={e => setLastName(e.target.value)}
+           onChange={(e) => setLastName(e.target.value)}
          />
        </label>
        <Button
@@ -41,4 +41,4 @@ function LoginForm() {
      </>
    );
  }
- export default LoginForm;
+export default LoginForm; 
